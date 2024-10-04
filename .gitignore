@@ -1,5 +1,9 @@
-assets
+/assets
 
-build
-devel
-install
+/build
+/devel
+/install
+
+.vscode
+
+/cmake/cloud_fitConfig.cmake

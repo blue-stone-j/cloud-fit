@@ -9,9 +9,6 @@ class Interface
  public:
   pcl::PointCloud<pcl::PointXYZ> cloud;
   virtual int fit() = 0;
-  /* coefficients of model
-     plane: Ax+By+Cz+D=0, where A^2+B^2+C^2=1
-   */
   std::vector<float> model_coeffs;
 };
 

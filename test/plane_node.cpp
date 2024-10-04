@@ -10,7 +10,7 @@ int main()
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
   if (pcl::io::loadPCDFile<pcl::PointXYZ>(path, *cloud) == -1)
   {
-    PCL_ERROR("Couldn't read file your_point_cloud_file.pcd \n");
+    PCL_ERROR("Couldn't read file point_cloud_file.pcd \n");
     return (-1);
   }
 
@@ -28,7 +28,7 @@ int main()
   seg.setInputCloud(cloud);
   seg.segment(inliers, coefficients);
 
-  // 输出平面方程的系数
+  // plane equation
   std::cout << "The plane equation is " << coefficients.values[0] << "x + "
             << coefficients.values[1] << "y + " << coefficients.values[2] << "z + "
             << coefficients.values[3] << " = 0" << std::endl;

@@ -1,8 +1,11 @@
 #include "plane.h"
 
+#include <Eigen/Dense>
+#include <Eigen/Eigenvalues>
+
 int PlaneFit::fit()
 {
-  { // 主成分分析（PCA）
+  { // PCA(Principal components analysis)
     int num_points = cloud.size();
 
     Eigen::MatrixXd points(num_points, 3);
@@ -13,28 +16,28 @@ int PlaneFit::fit()
       points(i, 2) = cloud[i].z;
     }
 
-    // 计算点云的质心
+    // gravity
     Eigen::Vector3d centroid = points.colwise().mean();
 
-    // 计算去中心化的点云
+    // decentralize
     Eigen::MatrixXd demeaned_points = points.rowwise() - centroid.transpose();
 
-    // 计算协方差矩阵
+    // covariance
     Eigen::Matrix3d cov_matrix = demeaned_points.transpose() * demeaned_points / double(num_points);
 
-    // 计算特征值和特征向量
+    // eigen values and eigen vectors
     Eigen::SelfAdjointEigenSolver<Eigen::Matrix3d> es(cov_matrix);
 
-    // 找到最小特征值对应的特征向量
+    // eigen vector corresponding to minimal eigen value
     Eigen::Vector3d normal_vector = es.eigenvectors().col(0);
 
-    // 计算平面方程的d值
+    // d of plane equation
     double d = -normal_vector.dot(centroid);
 
     std::cout << "The plane equation is " << normal_vector(0) << "x + " << normal_vector(1) << "y + " << normal_vector(2) << "z + " << d << " = 0" << std::endl;
   }
 
-  { // 最小二乘法
+  { // least square
     int num_points = cloud.size();
 
     Eigen::MatrixXd points(num_points, 3);
@@ -44,15 +47,15 @@ int PlaneFit::fit()
       points(i, 1) = cloud[i].y;
       points(i, 2) = cloud[i].z;
     }
-    // 构建矩阵 A 和向量 B
+    // construct matrix A and vector B
     Eigen::MatrixXd A(num_points, 3);
     A.col(0) = points.col(0);                     // x
     A.col(1) = points.col(1);                     // y
-    A.col(2) = Eigen::VectorXd::Ones(num_points); // 常数项
+    A.col(2) = Eigen::VectorXd::Ones(num_points); // constant
 
     Eigen::VectorXd B = points.col(2); // z
 
-    // 使用最小二乘法求解
+    // solve by least square
     Eigen::VectorXd coeff = A.bdcSvd(Eigen::ComputeThinU | Eigen::ComputeThinV).solve(B);
 
     double norm = std::sqrt(1 + coeff(0) * coeff(0) + coeff(1) * coeff(1));
