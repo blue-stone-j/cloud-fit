@@ -1,5 +1,5 @@
-#ifndef LINEFIT_H
-#define LINEFIT_H
+#ifndef LINE_FIT_H
+#define LINE_FIT_H
 
 #include "interface.h"
 

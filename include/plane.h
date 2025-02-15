@@ -1,5 +1,5 @@
-#ifndef PLANEFIT_H
-#define PLANEFIT_H
+#ifndef PLANE_FIT_H
+#define PLANE_FIT_H
 
 #include "interface.h"
 

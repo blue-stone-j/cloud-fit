@@ -11,8 +11,8 @@ rm -rf install &&
 
 echo -e "${BLUE}Start working.${NC}"
 
-# set varible
-echo -e "${BLUE}Start setting varibles.${NC}"
+# set variable
+echo -e "${BLUE}Start setting variables.${NC}"
 PROJECT_NAME=cloud_fit
 PROJECT_NAME_U=$(echo "$PROJECT_NAME" | tr '[:lower:]' '[:upper:]')
 PROJECT_NAME_L=$(echo "$PROJECT_NAME" | tr '[:upper:]' '[:lower:]')
@@ -26,13 +26,14 @@ CLOUD_FIT_VERSION=${CLOUD_FIT_VERSION_MAJOR}.${CLOUD_FIT_VERSION_MINOR}.${CLOUD_
 BUILD_TEST=TRUE
 
 CMAKE_INSTALL_PREFIX=$(realpath $(dirname "${BASH_SOURCE[0]}"))/install
-echo -e "${GREEN}Set varibles completed.${NC}"
+echo -e "${GREEN}Set variables completed.${NC}"
 
 # build
 echo -e "${BLUE}Start building.${NC}"
 mkdir -p build &&
 cd build &&
-cmake -DCLOUD_FIT_VERSION=${CLOUD_FIT_VERSION} \
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON\
+      -DCLOUD_FIT_VERSION=${CLOUD_FIT_VERSION} \
       -DCMAKE_INSTALL_PREFIX=$CMAKE_INSTALL_PREFIX \
       -DBUILD_TEST=$BUILD_TEST \
       ..

@@ -1,5 +1,5 @@
-#ifndef CYLINDERFIT_H
-#define CYLINDERFIT_H
+#ifndef CYLINDER_FIT_H
+#define CYLINDER_FIT_H
 
 #include "interface.h"
 

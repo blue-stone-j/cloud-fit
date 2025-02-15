@@ -8,15 +8,18 @@
       "includePath": [
         "/usr/include/**",
         "/usr/local/include/**",
+        "/opt/ros/noetic/include/**",
+        "/usr/include/pcl-1.10/**",
+        "/usr/include/opencv4/**",
         "/usr/local/cuda-11.4/**",
+        "${workspaceFolder}/3DLineDetection/include/**",
         "${workspaceFolder}/include/**"
       ],
-      "name": "ROS",
-      "intelliSenseMode": "gcc-x64",
-      "compilerPath": "/usr/bin/gcc",
-      "cStandard": "gnu11",
-      "cppStandard": "c++17",
-      "configurationProvider": "ms-vscode.cmake-tools"
+      "name": "cloud_fit",
+      "intelliSenseMode": "linux-clang-x64",
+      "compilerPath": "/usr/bin/clang",
+      "cStandard": "c17",
+      "cppStandard": "c++17"
     }
   ],
   "version": 4
