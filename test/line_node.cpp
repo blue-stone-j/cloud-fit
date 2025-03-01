@@ -27,12 +27,12 @@ int main()
   pcl::copyPointCloud<pcl::PointXYZ>(*cloud, inliers, *cloud_line);
 
   //----------------------------输出模型参数--------------------------
-  Eigen::VectorXf coef;
-  ransac.getModelCoefficients(coef);
+  Eigen::VectorXf coefficients;
+  ransac.getModelCoefficients(coefficients);
   std::cout << "直线方程为：\n"
-            << "   (x - " << coef[0] << ") / " << coef[3]
-            << " = (y - " << coef[1] << ") / " << coef[4]
-            << " = (z - " << coef[2] << ") / " << coef[5] << std::endl;
+            << "   (x - " << coefficients[0] << ") / " << coefficients[3]
+            << " = (y - " << coefficients[1] << ") / " << coefficients[4]
+            << " = (z - " << coefficients[2] << ") / " << coefficients[5] << std::endl;
 
 
   // customized

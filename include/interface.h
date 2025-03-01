@@ -9,7 +9,7 @@ class Interface
  public:
   pcl::PointCloud<pcl::PointXYZ> cloud;
   virtual int fit() = 0;
-  std::vector<float> model_coeffs;
+  std::vector<float> model_coefficients;
 };
 
 

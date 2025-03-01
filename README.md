@@ -25,7 +25,7 @@ Extract plane from cloud and estimate thickness of this plane. Note that the who
 This shell file is for compilation and installation of code.
 
 1. **multi-thread**: First argument of this shell is num of threads to perform compilation and installation. For example, `make.sh 7` means 7 threads will be used. If no argument is provided, only one thread will be used.
-2. **installation directory**: Default installation directory is root directory of this package. You can change `CMAKE_INSTALL_PREFIX` to chage the directory.
+2. **installation directory**: Default installation directory is root directory of this package. You can change `CMAKE_INSTALL_PREFIX` to change the directory.
 3. **`BUILD_TEST`**: Default value is `TRUE`, which means executable files for test will be generated. You can change it to `FALSE` if you don't need it. The executable files won't be installed.
 
 ### cmake

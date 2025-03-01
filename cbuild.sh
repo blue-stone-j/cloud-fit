@@ -6,8 +6,8 @@ YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-rm -rf build &&
-rm -rf install &&
+# rm -rf build &&
+# rm -rf install &&
 
 echo -e "${BLUE}Start working.${NC}"
 

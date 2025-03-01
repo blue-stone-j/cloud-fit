@@ -33,7 +33,7 @@ class LineFunctions
   static void lineFittingSVD(cv::Point *points, int length, std::vector<double> &parameters, double &maxDev);
 };
 
-// decribe a point
+// describe a point
 struct PCAInfo
 {
   double lambda0, scale;          // to evaluate result pca; 尺度, if neighbors and this point is close, scale will be a small value
