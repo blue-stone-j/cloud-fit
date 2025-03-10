@@ -9,5 +9,5 @@ install(TARGETS plane_fit
 
 if(BUILD_TEST)
   add_executable(plane_node test/plane_node.cpp src/plane.cpp)
-  target_link_libraries(plane_node ${PCL_LIBRARIES})
+  target_link_libraries(plane_node ${PCL_LIBRARIES} gtest gtest_main)
 endif()

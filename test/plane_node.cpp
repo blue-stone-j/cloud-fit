@@ -1,17 +1,18 @@
+#include <gtest/gtest.h>
 
 #include <pcl/io/pcd_io.h>
 #include <pcl/segmentation/sac_segmentation.h>
 
 #include "plane.h"
 
-int main()
+TEST(Test, test1)
 {
   std::string path = "../assets/cloud/plane1.pcd";
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
   if (pcl::io::loadPCDFile<pcl::PointXYZ>(path, *cloud) == -1)
   {
     PCL_ERROR("Couldn't read file point_cloud_file.pcd \n");
-    return (-1);
+    ASSERT_TRUE(false);
   }
 
   // pcl
@@ -39,6 +40,12 @@ int main()
   plane_fit.cloud = *cloud;
 
   plane_fit.fit();
+}
 
-  return 0;
+int main(int argc, char **argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
+
+
+  return RUN_ALL_TESTS();
 }

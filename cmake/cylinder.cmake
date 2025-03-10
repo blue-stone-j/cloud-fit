@@ -9,5 +9,5 @@ install(TARGETS cylinder_fit
 
 if(BUILD_TEST)
   add_executable(cylinder_node test/cylinder_node.cpp src/cylinder.cpp)
-  target_link_libraries(cylinder_node ${PCL_LIBRARIES})
+  target_link_libraries(cylinder_node ${PCL_LIBRARIES} gtest gtest_main)
 endif()

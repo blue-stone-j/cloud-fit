@@ -9,5 +9,5 @@ install(TARGETS line_fit
 
 if(BUILD_TEST)
   add_executable(line_node test/line_node.cpp src/line.cpp)
-  target_link_libraries(line_node ${PCL_LIBRARIES})
+  target_link_libraries(line_node ${PCL_LIBRARIES} gtest gtest_main)
 endif()

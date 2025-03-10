@@ -1,9 +1,11 @@
+#include <gtest/gtest.h>
+
 #include <pcl/io/pcd_io.h>
 #include <pcl/sample_consensus/ransac.h>
 #include <pcl/sample_consensus/sac_model_line.h> // 拟合直线
 #include <pcl/visualization/pcl_visualizer.h>
 
-int main()
+TEST(Test, test1)
 {
   //-------------------------- 加载点云 --------------------------
   std::string path = "../assets/cloud/line1.pcd";
@@ -11,7 +13,7 @@ int main()
   if (pcl::io::loadPCDFile(path, *cloud) < 0)
   {
     PCL_ERROR("点云读取失败！\n");
-    return -1;
+    ASSERT_TRUE(false);
   }
   std::cout << "点云点数为：" << cloud->points.size() << std::endl;
   //-----------------------------拟合直线-----------------------------
@@ -33,9 +35,12 @@ int main()
             << "   (x - " << coefficients[0] << ") / " << coefficients[3]
             << " = (y - " << coefficients[1] << ") / " << coefficients[4]
             << " = (z - " << coefficients[2] << ") / " << coefficients[5] << std::endl;
+}
+
+int main(int argc, char **argv)
+{
+  ::testing::InitGoogleTest(&argc, argv);
 
 
-  // customized
-
-  return 0;
+  return RUN_ALL_TESTS();
 }
