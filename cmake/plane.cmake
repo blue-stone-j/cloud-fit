@@ -8,6 +8,6 @@ install(TARGETS plane_fit
   DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
 if(BUILD_TEST)
-  add_executable(plane_node test/plane_node.cpp src/plane.cpp)
-  target_link_libraries(plane_node ${PCL_LIBRARIES} gtest gtest_main)
+  add_executable(plane_test test/plane_test.cpp src/plane.cpp)
+  target_link_libraries(plane_test ${PCL_LIBRARIES} gtest gtest_main)
 endif()
